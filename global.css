@@ -1,0 +1,260 @@
+/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&display=swap');
+
+/* MOBILE FIRST WORKFLOW */
+/* CSS CUSTOM PROPERTIES */
+:root {
+  /* Primary Colors */
+  --very-dark-magenta: hsl(300, 43%, 22%);
+  --soft-pink: hsl(333, 80%, 67%);
+  /* Neutral Colors */
+  --dark-grayish-magenta: hsl(303, 10%, 53%);
+  --light-grayish-magenta: hsl(300, 24%, 96%);
+  --white: hsl(0, 0%, 100%);
+  /* Fonts */
+  --font-league-spartan: 'League Spartan', sans-serif;
+  --font-league-spartan-wght-400: 400;
+  --font-league-spartan-wght-500: 500;
+  --font-league-spartan-wght-700: 700;
+  --font-size-15px: calc(15em/16); /* 15px in em unit */
+  /* Layout Stylings */
+  --base-max-width: 35rem;
+  --base-flex-flow: column wrap;
+  --base-body-bg-img: 
+    url('images/bg-pattern-top-mobile.svg'),
+    url('images/bg-pattern-bottom-mobile.svg');
+}
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+body {
+  background-image: var(--base-body-bg-img);
+  background-repeat: no-repeat;
+  background-position: top left, bottom right;
+  font-family: var(--font-league-spartan);
+  font-weight: var(--font-league-spartan-wght-400);
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+#proof-section {
+  width: 87%;
+  max-width: var(--base-max-width);
+  margin: 4rem 0;
+}
+
+#proof-section > * {
+  display: flex;
+  flex-flow: var(--base-flex-flow);
+}
+.page-info-section {
+  text-align: center;
+  align-items: center;
+}
+
+.page-info-section > h1 {
+  color: var(--very-dark-magenta);
+  font-size: 3.5em;
+  font-weight: var(--font-league-spartan-wght-700);
+  letter-spacing: -0.05em;
+  line-height: 0.8;
+  max-width: 12ch;
+}
+
+.page-info-section > p {
+  color: var(--dark-grayish-magenta);
+  font-weight: var(--font-league-spartan-wght-500);
+  font-size: 1.09em;
+  line-height: 1.4;
+  max-width: 40ch;
+  margin: 1.25rem 0 0;
+}
+
+.rating-section {
+  margin: 2rem 0 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: var(--base-flex-flow);
+  gap: 1rem;
+}
+
+.received-ratings {
+  width: 100%;
+  background-color: var(--light-grayish-magenta);
+  color: var(--very-dark-magenta);
+  text-align: center;
+  font-weight: var(--font-league-spartan-wght-700);
+  padding: 1em;
+  border-radius: 5px;
+  display: flex;
+  flex-flow: var(--base-flex-flow);
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+.received-ratings::before {
+  content: '';
+  display: block;
+  width: 10ch;
+  height: 1em;
+  background-image: url('images/icon-star.svg');
+  background-repeat: space;
+}
+
+.testimonials-section {
+  
+}
+
+.testimonials {
+  background-color: var(--very-dark-magenta);
+  color: var(--white);
+  padding: 2em;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.buyer-profile {
+  display: flex;
+  flex-flow: var(--base-flex-flow);
+  align-items: center;
+  --base-flex-flow: row wrap;
+}
+
+.buyer-profile > img {
+  width: 2.5em;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  margin-right: 1.5rem;
+}
+
+.buyer-profile > span {
+  display: block;
+  font-weight: var(--font-league-spartan-wght-700);
+  line-height: 1.2;
+}
+
+.buyer-profile > span::after {
+  content: 'Verified Buyer';
+  display: block;
+  color: var(--soft-pink);
+  font-weight: var(--font-league-spartan-wght-400);
+}
+
+.testimonials > p {
+  font-weight: var(--font-league-spartan-wght-500);
+  line-height: 1.4;
+  margin-top: 1.5rem;
+}
+
+.attribution {
+  font-size: 0.625em;
+  text-align: center;
+  color: var(--very-dark-magenta);
+  padding: 1em;
+}
+.attribution a {
+  color: var(--soft-pink);
+}
+
+/* LESS WIDE DESKTOP */
+@media (min-width: 60em) {
+  
+  body {
+    --base-body-bg-img:
+      url('images/bg-pattern-top-desktop.svg'),
+      url('images/bg-pattern-bottom-desktop.svg');
+  }
+  
+  #proof-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+      'infos ratings'
+      'testimonials testimonials';
+    grid-column-gap: 2rem;
+    grid-row-gap: 4rem;
+    --base-max-width: 70rem;
+  }
+  
+  #proof-section > * {
+    margin: unset;
+  }
+  
+  .page-info-section {
+    grid-area: infos;
+    text-align: left;
+    align-items: start;
+  }
+  
+  .rating-section {
+    grid-area: ratings;
+  }
+  
+  .testimonial-section {
+    grid-area: testimonials;
+    gap: 1rem;
+    --base-flex-flow: row wrap;
+  }
+  
+  .testimonial-section > * {
+    flex: 1 1 0%;
+    margin: unset;
+  }
+  
+  .attribution {
+  font-size: 1em;
+  }
+
+}
+
+/* WIDER SCREEN DESKTOPS */
+@media(min-width: 70em){
+  
+  .received-ratings {
+    width: 85%;
+    padding: 1.25em;
+    padding-left: 2em;
+    justify-content: start;
+    gap: 2em;
+    --base-flex-flow: row wrap;
+  }
+  
+  .received-ratings:first-of-type {
+    align-self: start;
+  }
+  
+  .received-ratings:last-of-type {
+    align-self: end;
+  }
+  
+  .testimonial-section {
+    min-height: 16rem;
+    gap: 2rem;
+  }
+  
+  .testimonials:nth-of-type(1) {
+    align-self: start;
+  }
+  
+  .testimonials:nth-of-type(2) {
+    align-self: center;
+  }
+  
+  .testimonials:nth-of-type(3) {
+    align-self: end;
+  }
+
+}
